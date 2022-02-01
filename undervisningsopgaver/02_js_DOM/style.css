@@ -13,6 +13,8 @@ header {
 
 section {
   margin: 0px 50px;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
 }
 
 article {

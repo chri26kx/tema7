@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Titel</h1>
+    </header>
+    <main>
+      <h2>Overskrift</h2>
+      <section>
+        <article class="article1">
+          <img class="img1" src="https://placeimg.com/700/500/any" alt="" />
+          <h3>Article 1</h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit
+            exercitationem accusamus voluptates numquam eaque, id dolorem
+            necessitatibus veritatis similique quaerat nemo nisi nostrum
+            accusantium aperiam amet? Cum magni reprehenderit beatae!
+          </p>
+        </article>
+        <article class="article2">
+          <img class="img2" src="https://placeimg.com/700/500/any" alt="" />
+          <h3>Article 2</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eum
+            culpa soluta dolore at tempora tenetur sint aspernatur! Facere minus
+            earum aperiam. Libero, recusandae? At laboriosam corporis reiciendis
+            natus perferendis?
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer><p>This is the footer</p></footer>
+
+    <script>
+      const h1 = document.querySelector("h1");
+      console.log(h1);
+
+      const h2 = document.querySelector("h2");
+      console.log(h2);
+
+      const h3_1 = document.querySelector("article:nth-child(1) h3");
+      console.log(h3_1);
+
+      const h3_2 = document.querySelector("article:nth-child(2) h3");
+      console.log(h3_2);
+
+      const img1 = document.querySelector("article:nth-child(1) img");
+      console.log(img1);
+
+      const img2 = document.querySelector("article:nth-child(2) img");
+      console.log(img2);
+
+      const article1 = document.querySelector("article:nth-child(1)");
+      console.log(article1);
+
+      const article2 = document.querySelector("article:nth-child(2)");
+      console.log(article2);
+
+      let mainSection = document.querySelector("section");
+
+      // nyt artikel element
+      let newArticle = document.createElement("article");
+
+      // tilføj article til section
+      mainSection.appendChild(newArticle);
+
+      // nyt H# element
+      let overskrift = document.createElement("h3");
+
+      // tekst til overskriften
+      let overskriftText = document.createTextNode("Article 3");
+
+      // indsæt tekst i overskrift
+      overskrift.appendChild(overskriftText);
+
+      // tilføj overskrift til article
+      newArticle.appendChild(overskrift);
+
+      let img3 = document.createElement("img");
+      img3.src = "https://placeimg.com/700/500/nature";
+      img3.alt = "natur";
+
+      newArticle.appendChild(img3);
+
+      let pText = document.createElement("p");
+      pText.textContent = "loremloremlorem ips ips ips";
+
+      newArticle.appendChild(pText);
+
+      // Ændre Overskrifter
+      h1.textContent = "HELLO";
+      h2.textContent = "Med dig";
+      h3_1.textContent = "gudrun";
+      h3_2.textContent = "Feta";
+
+      // Ændre Billeder og alt text
+      img1.src = "https://placeimg.com/700/500/nature";
+      img2.src = "https://placeimg.com/700/500/nature";
+      img1.alt = "natur";
+      img2.alt = "natur";
+    </script>
+  </body>
+</html>

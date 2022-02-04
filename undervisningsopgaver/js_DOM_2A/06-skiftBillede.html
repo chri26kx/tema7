@@ -107,7 +107,16 @@
         img2.src = "https://placeimg.com/700/500/nature";
         img1.alt = "natur";
         img2.alt = "natur";
+
+        img1.addEventListener("click", nytBillede);
       });
+
+      function nytBillede() {
+        console.log("nytBillede");
+
+        let tilfældigtTal = Math.floor(Math.random() * 10) + 1;
+        img1.src = "https://placeimg.com/700/500/arch?t=" + tilfældigtTal;
+      }
     </script>
   </body>
 </html>

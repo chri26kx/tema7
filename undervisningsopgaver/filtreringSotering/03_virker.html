@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <button data-treonde="alle" class="valgt">Alle</button>
+      <button data-treonde="ja">Troende</button>
+      <button data-treonde="tvivler">Tvivler</button>
+      <button data-treonde="nej">Ikke troende</button>
+    </nav>
+    <main></main>
+
+    <template>
+      <article>
+        <img class="billede" src="" alt="" />
+        <h2 class="navn"></h2>
+        <p class="titel"></p>
+        <p class="fødselsdag"></p>
+      </article>
+    </template>
+
+    <script>
+      const main = document.querySelector("main");
+      const template = document.querySelector("template").content;
+      let filter = "alle";
+      let personer;
+
+      const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+      const options = {
+        headers: {
+          "x-apikey": "600fe9211346a1524ff12e31",
+        },
+      };
+
+      const filterKnapper = document.querySelectorAll("nav button");
+      filterKnapper.forEach((knap) =>
+        knap.addEventListener("click", filtrerPersoner)
+      );
+
+      function filtrerPersoner() {
+        console.log(this.dataset);
+        filter = this.dataset.troende;
+        visPersoner();
+      }
+
+      hentData();
+
+      async function hentData() {
+        const resspons = await fetch(url, options);
+        const json = await resspons.json();
+        vis(json);
+      }
+
+      function vis(json) {
+        console.log(json);
+        main.textContent = "";
+
+        personer.forEach((person) => {
+          if (filter == person.troende || filter == "alle") {
+            const klon = template.cloneNode(true);
+            klon.querySelector(".billede").src = "faces/" + person.billede;
+            klon.querySelector(".navn").textContent =
+              person.fornavn + " " + person.efternavn;
+            klon.querySelector(".titel").textContent = person.titel;
+            klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+            main.appendChild(klon);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
